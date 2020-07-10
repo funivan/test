@@ -1,3 +1,9 @@
+# Clone
+```shell script
+mkdir -p test && cd test &&  git clone https://github.com/funivan/test/ . && git checkout scala-forth;
+sbt test
+```
+
 # Forth
 
 Implement an evaluator for a very simple subset of Forth.
