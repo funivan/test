@@ -1,6 +1,9 @@
 # Clone
 ```shell script
-mkdir -p test && cd test &&  git clone https://github.com/funivan/test/ . && git checkout scala-forth;
+mkdir -p test && cd test && \
+ git clone https://github.com/funivan/test/ . && \
+ git checkout scala-forth;
+
 sbt test
 ```
 
