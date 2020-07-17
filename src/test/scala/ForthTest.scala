@@ -1,4 +1,5 @@
-import org.scalatest.{Matchers, FunSuite}
+import org.scalatest.{FunSuite, Matchers}
+import parser.Forth
 
 /** @version 1.6.0 */
 class ForthTest extends FunSuite with Matchers {
