@@ -1,18 +1,17 @@
 package parser
 
-import definitions.{Program, UserInstructions}
 import definitions.Operation.Result
-import parser.tokenizer.Tokenizer
+import definitions.{Program, UserInstructions}
+import parser.tokenizer.Tokenizer.tokenize
+import parser.transformer.{Main, ProcessInstructions, ScanInstructions}
 
 class Forth extends Program {
-  private val parser = Parser
-  private val tokenizer = Tokenizer
 
   override def eval(text: String): Result = {
-    val r = parser.parse(
-      tokenizer.tokenize(text.split(" ").toList),
-      new UserInstructions()
-    )
-    r.compute(NumbersStack())
+    Parser(ScanInstructions <|> ProcessInstructions <|> Main)
+      .parse(
+        tokenize(text.split(" ").toList),
+        new UserInstructions()
+      ).compute(NumbersStack())
   }
 }
