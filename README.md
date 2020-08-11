@@ -7,7 +7,6 @@ is a stack-based programming language. Implement a very basic evaluator
 for a small subset of Forth.
 
 Your evaluator has to support the following words:
-
 - `+`, `-`, `*`, `/` (integer arithmetic)
 - `DUP`, `DROP`, `SWAP`, `OVER` (stack manipulation)
 
@@ -23,7 +22,7 @@ more letters, digits, symbols or punctuation that is not a number.
 (Forth probably uses slightly different rules, but this is close
 enough.)
 
-Words are case-insensitive.
+Words are case-insensitive!
 
 The Scala exercises assume an SBT project scheme. The exercise solution source
 should be placed within the exercise directory/src/main/scala. The exercise
