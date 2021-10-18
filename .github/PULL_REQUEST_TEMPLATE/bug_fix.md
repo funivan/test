@@ -73,13 +73,6 @@ body:
   validations:
   required: true
 
-- type: input
-  id: host-os-version
-  attributes:
-  label: What OS version does it have installed?
-  placeholder: "e.g. macOS 11.5.1"
-  validations:
-  required: true
 
 - type: input
   id: host-toolchain
