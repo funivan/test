@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: my-step
         run: echo "Hello World!"
-     - name: Launch Scala Steward
+      - name: Launch Scala Steward
         uses: scala-steward-org/scala-steward-action@v2
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
