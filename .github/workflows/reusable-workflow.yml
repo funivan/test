@@ -12,6 +12,8 @@ jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
+      - name: run
+        run: "env"
       - name: Launch Scala Steward
         uses: scala-steward-org/scala-steward-action@v2
         env:
