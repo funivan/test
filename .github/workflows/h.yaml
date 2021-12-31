@@ -2,7 +2,7 @@ on:
   push:
 jobs:
   call-workflow-passing-data:
-    uses: funivan/test/.github/workflows/reusable-workflow.yml@master
+    uses: funivan/test/.github/reusable-workflow.yml@master
     with:
       repository: funivan/test
     secrets:
