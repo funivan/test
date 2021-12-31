@@ -4,10 +4,10 @@ jobs:
   call-workflow-passing-data:
     steps:
       - shell: bash
-          env:
-            SUPER_SECRET: ${{ secrets.SuperSecret }}
-          run: |
-            echo "$SUPER_SECRET" | wc -l
+        env:
+          SUPER_SECRET: ${{ secrets.SuperSecret }}
+        run: |
+          echo "$SUPER_SECRET" | wc -l
 #      - uses: actions/checkout@v2
 #      - uses: funivan/test/.github/workflows/reusable-workflow.yml@master
 #        with:
