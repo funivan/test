@@ -4,4 +4,4 @@ jobs:
   call-workflow-passing-data:
     uses: funivan/test/.github/workflows/reusable-workflow.yml@master
     with:
-      repo: funivan/test
+      repository: funivan/test
