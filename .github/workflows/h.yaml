@@ -2,6 +2,7 @@ on:
   push:
 jobs:
   call-workflow-passing-data:
+    runs-on: ubuntu-latest
     steps:
       - shell: bash
         env:
