@@ -8,9 +8,8 @@ jobs:
         env:
           SUPER_SECRET: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
         run: |
-          echo "$SUPER_SECRET" | wc -l
-#      - uses: actions/checkout@v2
-#      - uses: funivan/test/.github/workflows/reusable-workflow.yml@master
-#        with:
-#          repository: funivan/test
-#          token: "${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}"
+          echo "$SUPER_SECRET" | wc -c
+      - uses: funivan/test/.github/workflows/reusable-workflow.yml@master
+        with:
+          repository: funivan/test
+          token: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
