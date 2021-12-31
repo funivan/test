@@ -6,7 +6,7 @@ jobs:
     steps:
       - shell: bash
         env:
-          SUPER_SECRET: ${{ secrets.SuperSecret }}
+          SUPER_SECRET: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
         run: |
           echo "$SUPER_SECRET" | wc -l
 #      - uses: actions/checkout@v2
