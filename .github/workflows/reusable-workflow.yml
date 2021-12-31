@@ -4,22 +4,20 @@ on:
       repository:
         required: true
         type: string
-#    secrets:
-#      token:
-#        required: true
+    secrets:
+      token:
+        required: true
 
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
-      - name: run
-        run: "env"
       - name: Launch Scala Steward
         uses: scala-steward-org/scala-steward-action@v2
         env:
-          GITHUB_TOKEN: "${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}"
+          GITHUB_TOKEN: "${{ secrets.token }}"
         with:
           github-repository: ${{ inputs.repository }}
-          github-token: "${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}"
+          github-token: "${{ secrets.token }}"
           author-email: "alotofall@gmail.com"
           author-name: "Ivan Shcherbak"

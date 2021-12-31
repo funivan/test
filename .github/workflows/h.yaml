@@ -5,5 +5,5 @@ jobs:
     uses: funivan/test/.github/workflows/reusable-workflow.yml@master
     with:
       repository: funivan/test
-#    secrets:
-#      token: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
+    secrets:
+      token: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
