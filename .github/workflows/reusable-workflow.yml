@@ -7,7 +7,7 @@ on:
     secrets:
       token:
         required: true
-        type: string
+
 jobs:
   reusable_workflow_job:
     runs-on: ubuntu-latest
