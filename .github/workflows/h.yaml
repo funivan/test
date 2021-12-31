@@ -2,14 +2,8 @@ on:
   push:
 jobs:
   call-workflow-passing-data:
-    runs-on: ubuntu-latest
-    steps:
-      - shell: bash
-        env:
-          SUPER_SECRET: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
-        run: |
-          echo "$SUPER_SECRET" | wc -c
-      - uses: funivan/test/.github/workflows/reusable-workflow.yml@master
-        with:
-          repository: funivan/test
-          token: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
+    uses: funivan/test/.github/workflows/reusable-workflow.yml@master
+    with:
+      repository: funivan/test
+    secrets:
+      token: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
