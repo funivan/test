@@ -2,8 +2,8 @@ on:
   push:
 jobs:
   call-workflow-passing-data:
-    uses: .github/workflows/reusable-workflow.yml@master
+    uses: funivan/test/.github/workflows/reusable-workflow.yml@master
     with:
       repository: funivan/test
-    secrets:
-      token: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
+#    secrets:
+#      token: ${{ secrets.SCALA_STEWARD_GITHUB_TOKEN }}
