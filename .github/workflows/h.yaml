@@ -1,5 +1,5 @@
 on:
-  push:
+  workflow_call:
 jobs:
   call-workflow-passing-data:
     uses: funivan/test/.github/workflows/updater.yml@master

@@ -1,0 +1,46 @@
+version: 2.1
+
+executors:
+  github-publisher:
+    docker:
+      - image: cibuilds/github:0.10
+commands:
+  store-artifacts:
+    steps:
+      - persist_to_workspace:
+          root: ./
+          paths:
+            - ./.assets/*
+  restore-artifacts:
+    steps:
+      - attach_workspace:
+          at: ./
+jobs:
+  test:
+    steps:
+      - run:
+          command: mkdir -p "./.assets/" && echo "test" > ./.assets/test.test
+      - store-artifacts
+  build:
+    steps:
+      - restore-artifacts
+      - run: |
+          echo "test2" > ./.assets/test2.test
+      - store-artifacts
+  publish:
+    executor: github-publisher
+    steps:
+      - restore-artifacts
+      - run: |
+          ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./assets/*.test
+workflows:
+  version: 2
+  full:
+    jobs:
+      - test
+      - publish:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.+/
