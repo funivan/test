@@ -4,6 +4,7 @@ executors:
   github-publisher:
     docker:
       - image: cibuilds/github:0.10
+
 commands:
   store-artifacts:
     steps:
@@ -39,15 +40,17 @@ jobs:
           ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${CIRCLE_TAG} ./assets/*.test
 workflows:
   version: 2
-  full:
+
+  test:
     jobs:
-      - test
-      - build:
-          requires: [test]
-      - publish:
-          requires: [build]
+      - test:
           filters:
             branches:
-              ignore: /.*/
+              only: /.+/
+            tags:
+              only: /.+/
+      - publish:
+          requires: [test]
+          filters:
             tags:
               only: /.+/
