@@ -40,12 +40,11 @@ jobs:
           ls -lah .
           ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_TAG} ./.assets/test.test
 
-filter_any_branch: &filter_any_branch
-  filters:
+filters:
+  any_branch: &filter_any_branch
     branches:
       only: /.+/
-filter_any_tag: &filter_any_tag
-  filters:
+  any_tag: &filter_any_tag
     tags:
       only: /.+/
 
@@ -55,11 +54,12 @@ workflows:
   test:
     jobs:
       - test:
-          <<: *filter_any_branch
-          <<: *filter_any_tag
+          filters:
+            <<: *filter_any_branch
+            <<: *filter_any_tag
       - build:
-          <<: *filter_any_branch
-          <<: *filter_any_tag
-      - publish:
           requires: [test]
-          <<: *filter_any_tag
+          filters: *filter_any_tag
+      - publish:
+          requires: [build]
+          filters: *filter_any_tag
