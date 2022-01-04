@@ -44,7 +44,7 @@ filters:
   on_push: &on_push
     filters:
       tags:
-        ignore: /.+/
+        only: /.+/
       branches:
         only: /.+/
   on_release: &on_release
