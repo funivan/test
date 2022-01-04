@@ -42,10 +42,10 @@ workflows:
   full:
     jobs:
       - test
+      - build:
+          requires: [test]
       - publish:
-          requires:
-            - test
-            - build
+          requires: [build]
           filters:
             branches:
               ignore: /.*/
