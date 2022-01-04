@@ -41,12 +41,18 @@ jobs:
           ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_TAG} ./.assets/test.test
 
 filters:
-  any_branch: &filter_any_branch
-    branches:
-      only: /.+/
-  any_tag: &filter_any_tag
-    tags:
-      only: /.+/
+  on_push: &on_push
+    filters:
+      tags:
+        ignore: /.+/
+      branches:
+        only: /.+/
+  on_release: &on_release
+    filters:
+      branches:
+        ignore: /.*/
+      tags:
+        only: /.+/
 
 workflows:
   version: 2
@@ -54,12 +60,10 @@ workflows:
   test:
     jobs:
       - test:
-          filters:
-            <<: *filter_any_branch
-            <<: *filter_any_tag
+          <<: *on_push
       - build:
           requires: [test]
-          filters: *filter_any_tag
+          <<: *on_release
       - publish:
           requires: [build]
-          filters: *filter_any_tag
+          <<: *on_release
