@@ -17,15 +17,19 @@ commands:
           at: ./
 jobs:
   test:
+    docker:
+      - image: 'cimg/base:stable'
     steps:
       - run:
           command: mkdir -p "./.assets/" && echo "test" > ./.assets/test.test
       - store-artifacts
   build:
+    docker:
+      - image: 'cimg/base:stable'
     steps:
       - restore-artifacts
-      - run: |
-          echo "test2" > ./.assets/test2.test
+      - run:
+          command: echo "test2" > ./.assets/test2.test
       - store-artifacts
   publish:
     executor: github-publisher
