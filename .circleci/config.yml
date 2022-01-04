@@ -37,7 +37,8 @@ jobs:
     steps:
       - restore-artifacts
       - run: |
-          ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_TAG} ./assets/test.test
+          ls -lah .
+          ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} ${CIRCLE_TAG} ./.assets/test.test
 workflows:
   version: 2
 
